@@ -10,12 +10,13 @@ from pyquery import PyQuery as pq
 from multiprocessing.dummy import Pool
 
 url_base = 'https://www.instagram.com/'
-uri = 'https://www.instagram.com/graphql/query/?query_hash=a5164aed103f24b03e7b7747a2d94e3c&variables=%7B%22id%22%3A%22{user_id}%22%2C%22first%22%3A12%2C%22after%22%3A%22{cursor}%22%7D'
+uri = 'https://www.instagram.com/graphql/query/?query_hash=003056d32c2554def87228bc3fd9668a&variables=%7B%22id%22%3A%22{user_id}%22%2C%22first%22%3A12%2C%22after%22%3A%22QVFCdkJpU2hJdnIzUGVBS0FnOWxJSEEwcHJLamlUMGhEd3pfUkpid2hKNjdLZUtaNDg5Y0hNX2pTYURwbGFwN1lSS3ZkT1BWZlhlSjJyb1Q3bUpaQ2JDMg%3D%3D%22%7D'
 
 
 headers = {
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
-    'cookie': '这里加上自己的cookie'
+    'Connection': 'close',
+    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4384.0 Safari/537.36',
+    'cookie': 'ig_did=10CA1A00-E933-4D79-895B-9BB314E8D49F,mid=YATwuAAEAAFh57j_4anIumq_aBA7,ig_nrcb=1,csrftoken=2MIampUTg7SSA3HAnFckh35hIlR4rcFa,ds_user_id=1432865061,sessionid=1432865061%3AX6WYgDuodGBuLy%3A22,rur=ATN,urlgen="{\"96.45.183.76\": 25820}:1l4Enk:WIeUEgXGzA0eVnzGJp35Sct5_P4"'
 }
 
 
