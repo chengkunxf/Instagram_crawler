@@ -9,7 +9,9 @@ from hashlib import md5
 from pyquery import PyQuery as pq
 
 url_base = 'https://www.instagram.com/'
-uri = 'https://www.instagram.com/graphql/query/?query_hash=003056d32c2554def87228bc3fd9668a&variables=%7B%22id%22%3A%22{user_id}%22%2C%22first%22%3A12%2C%22after%22%3A%22QVFCdkJpU2hJdnIzUGVBS0FnOWxJSEEwcHJLamlUMGhEd3pfUkpid2hKNjdLZUtaNDg5Y0hNX2pTYURwbGFwN1lSS3ZkT1BWZlhlSjJyb1Q3bUpaQ2JDMg%3D%3D%22%7D'
+# 修改第一条XHR请求的url中的after参数值
+# cursor=QVFDNU1wRXA0YlQ0Y0VTWXlCbnUydWVxY20xU3FSeTR2MjZCNE9LbkhSYWplNE93SHBWRzVJNzEwQ0ZTNTk3WVJLNVZUakpuOUJfdXBYc2lFcUxtRUVxMA==
+uri = 'https://www.instagram.com/graphql/query/?query_hash=003056d32c2554def87228bc3fd9668a&variables=%7B%22id%22%3A%22{user_id}%22%2C%22first%22%3A12%2C%22after%22%3A%22{cursor}%22%7D'
 
 headers = {
     'connection': 'close',
@@ -65,8 +67,7 @@ def get_urls(html):
     items = doc('script[type="text/javascript"]').items()
     for item in items:
         if item.text().strip().startswith('window._sharedData'):
-            print("--------------", item.text()[21:-1])
-            js_data = json.loads(item.text()[21:-1], encoding='utf-8')
+            js_data = json.loads(item.text()[21:-1])
             edges = js_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"]
             page_info = js_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_owner_to_timeline_media"][
                 'page_info']
