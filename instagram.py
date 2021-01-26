@@ -107,8 +107,9 @@ def main(user):
     print("--------------", url)
     html = get_html(url)
     urls = get_urls(html)
-    dirpath = r'.\{0}'.format(user)
+    dirpath = r'./{0}'.format(user)
     print("--------------", dirpath)
+    print("--------------", os.path.abspath(dirpath))
     if not os.path.exists(dirpath):
         os.mkdir(dirpath)
     for i in range(len(urls)):
@@ -116,7 +117,8 @@ def main(user):
         try:
             content = get_content(urls[i])
             endw = 'mp4' if r'mp4?_nc_ht=scontent' in urls[i] else 'jpg'
-            file_path = r'.\{0}\{1}.{2}'.format(user, md5(content).hexdigest(), endw)
+            file_path = r'./{0}/{1}.{2}'.format(user, md5(content).hexdigest(), endw)
+            print("--------------", os.path.abspath(file_path))
             if not os.path.exists(file_path):
                 with open(file_path, 'wb') as f:
                     print('第{0}张下载完成： '.format(i) + urls[i])
