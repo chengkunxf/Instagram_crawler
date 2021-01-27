@@ -116,7 +116,7 @@ def main(user):
         print('\n正在下载第{0}张： '.format(i) + urls[i], ' 还剩{0}张'.format(len(urls) - i - 1))
         try:
             content = get_content(urls[i])
-            endw = 'mp4' if r'mp4?_nc_ht=scontent' in urls[i] else 'jpg'
+            endw = 'mp4' if r'_n.mp4?efg=' in urls[i] else 'jpg'
             file_path = r'./{0}/{1}.{2}'.format(user, md5(content).hexdigest(), endw)
             print("--------------", os.path.abspath(file_path))
             if not os.path.exists(file_path):
